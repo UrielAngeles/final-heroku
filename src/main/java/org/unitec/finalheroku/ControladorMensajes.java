@@ -39,4 +39,13 @@ public class ControladorMensajes {
         repoMensa.save(new Mensajito(Id, titulo,cuerpo));
         return new Estatus(true, "Guardado con exito");
     }
+    
+    @RequestMapping(value="/mensajito/{Id}", method= RequestMethod.DELETE, headers={"Accept=application/json"})
+    public Estatus borrarMensaje(@PathVariable String Id){
+    
+        Estatus estatus=new Estatus(true, "Borrado con Exito");
+        repoMensa.delete(new Mensajito(Id));
+        
+        return estatus;
+    }
 }
